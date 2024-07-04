@@ -20,8 +20,19 @@ export default function Home() {
       <div className="mb-10">
         <h1 className="text-4xl font-extrabold mb-2">Gourab</h1>
         <h2 className="text-2xl">Has requested</h2>
-        <span className="font-bold">${amount}</span>
+        <span className="font-bold">₹{amount}</span>
       </div>
+
+      <Elements
+      stripe ={stripePromise}
+      options={{
+        mode: "payment",
+        amount:convertToSubcurrency(amount),
+        currency:"ind"
+      }}
+      >
+        <CheckoutPage amount={amount} />
+      </Elements>
     </main>
   );
 }
