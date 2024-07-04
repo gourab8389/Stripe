@@ -28,7 +28,7 @@ export default function Home() {
       options={{
         mode: "payment",
         amount:convertToSubcurrency(amount),
-        currency:"ind"
+        currency:"inr"
       }}
       >
         <CheckoutPage amount={amount} />
