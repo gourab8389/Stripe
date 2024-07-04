@@ -5,7 +5,7 @@ import convertToSubcurrency from "@/lib/convertToSubcurrency";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
-if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
+if (!process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY) {
   throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined");
 }
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
@@ -18,8 +18,7 @@ export default function Home() {
       <div className="mb-10">
         <h1 className="text-4xl font-extrabold mb-2">Gourab</h1>
         <h2 className="text-2xl">
-          has requested
-          <span className="font-bold"> ₹{amount}</span>
+          has requested <span className="font-bold"> ₹{amount}</span>
         </h2>
       </div>
 

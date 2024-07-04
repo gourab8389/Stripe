@@ -4,9 +4,8 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 export async function POST(request: NextRequest) {
   try {
     const { amount } = await request.json();
-
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount,
+      amount,
       currency: "inr",
       automatic_payment_methods: { enabled: true },
     });
